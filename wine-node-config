@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Wine-Node config script
+# 
+# Automates creating multiple wine-nodes
+#
+# The script assumes that you have a wine container with /bin in your container. ie:
+#
+# /home/username/CONTAINER/bin
+#
+# *** This script is meant to be used after updating your master-node. It removes the existing wine-nodes, then re-creates them.
+# By re-creating each node, the new data from the master-node is copied into the new nodes.
+#
+
+function func_pause(){
+   read -p "$*"
+}
+
+CONTAINER="/winebox" 
+
+echo -e "\n"
+
+# remove existing nodes
+
+rm -R "$CONTAINER"/node*
+
+# create new nodes
+
+env NODE=1 "$CONTAINER"/bin/wine-node-create
+env NODE=2 "$CONTAINER"/bin/wine-node-create
+env NODE=3 "$CONTAINER"/bin/wine-node-create
+env NODE=4 "$CONTAINER"/bin/wine-node-create
+
+sleep 1
+
+"$CONTAINER"/bin/fst-node-config
+
+exit
