@@ -12,7 +12,7 @@ This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 
 * the wine-nodes can be 'throw away' or a testing ground, in some cases. 
 * you can tie different nodes to different wine-builds (like a build using different patchsets), winelib dlls and/or loader.
 
-these scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes). So some folders that it creates or symlinks to wouldn't exist in a typical wine-prefix. however, it does show how it is done, the script is commented and is easy to edit. This scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
+these scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes). So some folders that it creates or symlinks wouldn't exist in a typical wine-prefix. However, it does show how it is done; the script is commented and is easy to edit. These scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
 
 * wine-node-create - configures a single wine-node in a given wine-container, using the master-node. The script MUST be read and modified to your own needs before using. It accounts for both x86 and x64 paths and typically reproduces only the necessay folders required in each wine-node. however, the [SPECIAL CASE] chunk of the script is meant for fine-tuning how some important app-specifc data may need to be handled. [read the script for more info]
 
