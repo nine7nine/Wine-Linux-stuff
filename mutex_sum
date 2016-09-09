@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Simple script to calculate the total sum of the rapidmutex.exe test.
+#
+# you can either execute this from within the folder containing the .exe or
+# you can adjust the path to reflect your PATH
+
+wine rapidmutex.exe |
+grep obtained |
+cut -c 24-29 |
+{ x=0; while read y; do x=$[$x+$y]; done; echo $x; }
