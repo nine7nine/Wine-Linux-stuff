@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Wine-loader-config - a bash script for executing wine-loader-create; compiling various dlls 
+# and transfering them into each node.
+
 function func_pause(){
    read -p "$*"
 }
@@ -10,9 +13,9 @@ echo -e "\n"
 
 # Create all dlls/dll.so for each prefix
 
-env NODE=1 "$CONTAINER"/bin/wine-node-dll-create
-env NODE=2 "$CONTAINER"/bin/wine-node-dll-create
-env NODE=3 "$CONTAINER"/bin/wine-node-dll-create
-env NODE=4 "$CONTAINER"/bin/wine-node-dll-create
+env NODE=1 "$CONTAINER"/bin/wine-node-loader-create
+env NODE=2 "$CONTAINER"/bin/wine-node-loader-create
+env NODE=3 "$CONTAINER"/bin/wine-node-loader-create
+env NODE=4 "$CONTAINER"/bin/wine-node-loader-create
 
 exit

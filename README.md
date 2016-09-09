@@ -42,6 +42,8 @@ This would create 4 wine-nodes, which would use about 100mb per node [on average
 
 # Mutex Tests
 
+2 windows executables for testing mutex performance and synchronisation in Windows/Wine.
+
 * rapid-mutex.exe - mutex test for windows/wine.
 
 * five-mutex.exe - The 'Dining/hungry Philosopher Problem' test for windows/wine.... 

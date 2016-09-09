@@ -2,8 +2,9 @@
 
 # Wine-loader Creation tool
 #
-# Script for building dlls (actually wineloader) for each wine node. Is useful when working with different builds of wine. This setup creates;
-# ntdll, kernel32 and ntoskernel. The script needs you to specify where the wine source code resides && where it is to be installed. In this case;
+# Script for building dlls (actually wineloader) for each wine node. Is useful when working with different 
+# builds of wine, or wineloaders that may be patched. This setup creates; ntdll, kernel32 and ntoskernel. 
+# The script needs you to specify where the wine source code resides && where it is to be installed. In this case;
 # 
 # wine's source code:
 #
