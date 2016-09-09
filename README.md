@@ -4,9 +4,10 @@ this repo contains a few tools that I use for managing Wine on Linux.
 
 # Wine-Node:
 
-This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that from the master-node, while copying other needed files in order to keep them unique/separate. Some other advanges are; 
+This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that data from the master-node, while copying only needed files in order to keep them unique/separate/sandboxed. It can be thought of as a psuedo/multi-user environment or sandbox templating/sharing... Some advanges are; 
 
-* multiple prefixes that share some core data
+* multiple prefixes that share some core data (reducing prefix sizes, significantly).
+* helpful for when you have massive sound libraries, app data or preset databases. (no need to copy to a new prefix).
 * you can run multiple 'singleton apps'. ie: apps that try and hold a mutex or disallow running multiple instances
 * you can manage installations from a single prefix
 * the wine-nodes can be 'throw away' or a testing ground, in some cases. 
@@ -14,9 +15,12 @@ This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 
 
 these scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes). So some folders that it creates or symlinks wouldn't exist in a typical wine-prefix. However, it does show how it is done; the script is commented and is easy to edit. These scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
 
-* wine-node-create - configures a single wine-node in a given wine-container, using the master-node. The script MUST be read and modified to your own needs before using. It accounts for both x86 and x64 paths and typically reproduces only the necessay folders required in each wine-node. however, the [SPECIAL CASE] chunk of the script is meant for fine-tuning how some important app-specifc data may need to be handled. [read the script for more info]
+* wine-node-create - configures a single wine-node in a given wine-container, using the master-node. The script MUST be read
+  and modified to your own needs before using. It accounts for both x86 and x64 paths and typically reproduces only the
+  necessay folders required in each wine-node. however, the [SPECIAL CASE] chunk of the script is meant for fine-tuning how
+  some important app-specifc data may need to be handled. [read the script for more info]
 
-* wine-node-config - this script is to actually execute wine-node-create.  you specify how many nodes to create in the script, like so;
+* wine-node-config - this script is to actually execute wine-node-create.  you specify how many nodes to create, like so;
 
 env NODE=1 "$CONTAINER"/bin/wine-node-create
 
@@ -28,7 +32,13 @@ env NODE=4 "$CONTAINER"/bin/wine-node-create
 
 This would create 4 wine-nodes, which would use about 100mb per node [on average].
 
-* gr5updb - A migration tool that I use to manage GuitarRig5 Presets. When wine isn't running, I can use this script to push all new gr5 presets from wine-nodes back to the master-node. Then, I run gr5 frm the master-node to pick up any changes in it's database. This way, when I update my master-node and re-run the 'wine-node-config' script, I can keep all of those changes and migrate them to each node.
+* Mastertricks - a winetricks wrapper for Wine-Node's master-node, automating the installation of commonly needed dlls and 
+  runtimes for proaudio apps and other programs. 
+
+* gr5updb - A migration tool that I use to manage GuitarRig5 Presets. When wine isn't running, I can use this script to push
+  all new gr5 presets from wine-nodes back to the master-node. Then, I run gr5 frm the master-node to pick up any changes in
+  it's database. This way, when I update my master-node and re-run the 'wine-node-config' script, I can keep all of those
+  changes and migrate them to each node.
 
 # Mutex Tests
 
