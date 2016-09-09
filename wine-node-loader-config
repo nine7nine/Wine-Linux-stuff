@@ -1,0 +1,18 @@
+#!/bin/sh
+
+function func_pause(){
+   read -p "$*"
+}
+
+CONTAINER="/winebox" 
+
+echo -e "\n"
+
+# Create all dlls/dll.so for each prefix
+
+env NODE=1 "$CONTAINER"/bin/wine-node-dll-create
+env NODE=2 "$CONTAINER"/bin/wine-node-dll-create
+env NODE=3 "$CONTAINER"/bin/wine-node-dll-create
+env NODE=4 "$CONTAINER"/bin/wine-node-dll-create
+
+exit
