@@ -34,7 +34,7 @@
 # Obviously, there can be / are other folders - but the above listed folders are the important / needed ones for a functional node. 
 # Here is a quick breakdown of the above map;
 #
-# 1). the [Keep / NO symlink] folders contain everything for a unique wineserver to run
+# 1). the [Keep / NO symlink] folders contain everything for a unique node
 #
 # 2). [master-node] symlinking allows to launch a node tied to it's master node + avoids having to setup multiple prefix's 
 #     running the same apps. [as does some of the specifics of the [SPECIAL CASE]s]   
