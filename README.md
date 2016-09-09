@@ -25,10 +25,10 @@ env NODE=4 "$CONTAINER"/bin/wine-node-create
 
 This would create 4 wine-nodes, which would use about 100mb per node [on average].
 
-# gr5updb - A migration tool that I use to manage GuitarRig5 Presets. When wine isn't running, I can use this script to push all new gr5 presets from wine-nodes back to the master-node. Then, I run gr5 frm the master-node to pick up any changes in it's database. This way, when I update my master-ndoe and re-run the 'wine-node-config' script, I can keep all of those changes and migrate them to each node.
+* gr5updb - A migration tool that I use to manage GuitarRig5 Presets. When wine isn't running, I can use this script to push all new gr5 presets from wine-nodes back to the master-node. Then, I run gr5 frm the master-node to pick up any changes in it's database. This way, when I update my master-ndoe and re-run the 'wine-node-config' script, I can keep all of those changes and migrate them to each node.
 
-# rapid-mutex.exe - mutex test for windows/wine.
+* rapid-mutex.exe - mutex test for windows/wine.
 
-# five-mutex.exe - The 'Dining/hungry Philosopher Problem' test for windows/wine.... 
+* five-mutex.exe - The 'Dining/hungry Philosopher Problem' test for windows/wine.... 
 
 ref: https://en.wikipedia.org/wiki/Dining_philosophers_problem
