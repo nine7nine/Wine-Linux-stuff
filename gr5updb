@@ -1,0 +1,64 @@
+#!/bin/bash
+
+################################################################################
+#
+# GR5 Preset Migration script: move presets from each-node back to master-node
+#
+
+# script psuedo-Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+
+tput setab 0 && func_freshHeadr
+
+####################################
+#
+# GR5updb Env vars
+
+CONTAINER="/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
+MASTER_NODE="master-node"                 # master node / wine-prefix we plan to symlink or copy data from, for node
+WINE_NODE="node"$NODE""                   # wine-node by name, specify at commandline - easier for multiple runs [use NODE=X wine-node-config]
+DOC="My Documents"
+NI="Native Instruments"
+USR="users/ninez"
+
+GR5_CONTAINER="gr5box"
+GR5_NODE="GR5node"$NODE""
+GR5_SHARED="Guitar Rig 5"
+
+# link GR5node data folders to each node
+
+echo -e "  \e[1;92mMigrating .ngrr [presets back into master-node.]"
+
+# grab GR5 presets from node, forward them back to master.  ** you must open GR5 in master-node + scan for new presets, before running 
+# the wine-node-config script. [as with any changes to wine and/or apps conifugrations; always do them in master-node].
+# since, we will be running wine-node-create, after this script - all settings/changes will be cloned into each node.
+# After updating gr5/db in masternode; Run wine-node-config [so that each gr5 node works, without needing to scan for them.
+
+# move presets to master-node
+
+env NODE=1 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$MASTER_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds
+env NODE=2 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$MASTER_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds
+env NODE=3 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$MASTER_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds
+env NODE=4 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$MASTER_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds
+
+# move to each gr5node / data container
+
+env NODE=1 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE"/Sounds
+env NODE=2 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE"/Sounds
+env NODE=3 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE"/Sounds
+env NODE=4 cp -R "$CONTAINER"/"$WINE_NODE"/drive_c/"$USR"/"$DOC"/"$NI"/"$GR5_SHARED"/Sounds/*.ngrr "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE"/Sounds
+
+exit
