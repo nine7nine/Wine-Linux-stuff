@@ -405,23 +405,6 @@ GR5_SHARED="Guitar Rig 5"
 
 ln -s "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE5"
 
-################################################################################
-#
-# linux libwine/fake dlls transer to node
-#
-
-#cd "$CONTAINER"
-
-#mkdir "$CONTAINER"/"$WINE_NODE"/lib
-#mkdir "$CONTAINER"/"$WINE_NODE"/lib32
-
-#cp -r /usr/lib/wine "$CONTAINER"/"$WINE_NODE"/lib
-#cp -r /usr/lib32/wine "$CONTAINER"/"$WINE_NODE"/lib32
-
-#  Nope. Instead, when we get to hear in wine-node-config, fst-node-config will start up - creating the above folders, etc.
-#  Since modified fsthost script will set the wine dll override path - we can store dlls in the node.
-#
-
 ####################################
 #
 # Say bye, give info, yada yda. exit

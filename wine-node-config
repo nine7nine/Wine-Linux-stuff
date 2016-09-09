@@ -31,8 +31,4 @@ env NODE=2 "$CONTAINER"/bin/wine-node-create
 env NODE=3 "$CONTAINER"/bin/wine-node-create
 env NODE=4 "$CONTAINER"/bin/wine-node-create
 
-sleep 1
-
-"$CONTAINER"/bin/fst-node-config
-
 exit
