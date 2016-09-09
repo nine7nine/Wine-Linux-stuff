@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Winetricks wrapper for Wine-Node's 'master-node'
+#
+# You specify the container and master-node, it will grab the most commonly needed dlls for running
+# proaudio apps. * note: winetricks doesn't always grab the x64 stuff, so you may need to manually download them from 
+# microsft, if needed.
+#
+# NOTE: if anything fails, you can always re-run the script; it should skip installed dlls.
+
+CONTAINER="/winebox"
+MASTER_NODE="master-node"
+
+export WINEPREFIX="$CONTAINER"/"$MASTER_NODE"
+
+winetricks ie8 mfc42 msasn1 msls31 msvcirt msxml3 secur32 vb6run vcrun2003 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 vcrun6 vcrun6sp6
+
+exit
