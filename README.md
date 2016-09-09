@@ -4,7 +4,7 @@ this repo contains a few tools that I use for managing Wine on Linux.
 
 # Wine-Node:
 
-This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that data from the master-node, while copying other needed files in order to keep them unique/separate. It can be thought of as a psuedo/multi-user environment or sandbox templating/sharing... Some advanges are; 
+This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that data from the master-node, while copying only needed files in order to keep them unique/separate/sandboxed. It can be thought of as a psuedo/multi-user environment or sandbox templating/sharing... Some advanges are; 
 
 * multiple prefixes that share some core data (reducing prefix sizes, significantly).
 * helpful for when you have massive sound libraries, app data or preset databases. (no need to copy to a new prefix).
