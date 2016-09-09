@@ -19,7 +19,7 @@ these scripts will not work out-of-the-box, as they are setup for my own wine-co
   necessay folders required in each wine-node. however, the [SPECIAL CASE] chunk of the script is meant for fine-tuning how
   some important app-specifc data may need to be handled. [read the script for more info]
 
-* wine-node-config - this script is to actually execute wine-node-create.  you specify how many nodes to create in the script, like so;
+* wine-node-config - this script is to actually execute wine-node-create.  you specify how many nodes to create, like so;
 
 env NODE=1 "$CONTAINER"/bin/wine-node-create
 
