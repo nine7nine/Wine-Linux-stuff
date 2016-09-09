@@ -19,8 +19,11 @@ these scripts will not work out-of-the-box, as they are setup for my own wine-co
 * wine-node-config - this script is to actually execute wine-node-create.  you specify how many nodes to create in the script, like so;
 
 env NODE=1 "$CONTAINER"/bin/wine-node-create
+
 env NODE=2 "$CONTAINER"/bin/wine-node-create
+
 env NODE=3 "$CONTAINER"/bin/wine-node-create
+
 env NODE=4 "$CONTAINER"/bin/wine-node-create
 
 This would create 4 wine-nodes, which would use about 100mb per node [on average].
