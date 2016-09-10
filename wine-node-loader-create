@@ -30,9 +30,6 @@ MK="dlls/ntdll dlls/kernel32 dlls/ntoskrnl.exe"
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
 make distclean
-mkdir lpaldr
-cp -r "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/server "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/lpaldr
-cp -r "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/loader "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/lpaldr
 rm -rf wine-tools64
 
 export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
