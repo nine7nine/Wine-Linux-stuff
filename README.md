@@ -4,13 +4,13 @@ this repo contains a few tools that I use for managing Wine on Linux.
 
 # Wine-Node:
 
-This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that data from the master-node, while copying only needed files in order to keep them unique/separate/sandboxed. It can be thought of as a psuedo/multi-user environment or sandbox templating/sharing... Some advanges are; 
+This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 'master-prefix' or master-node that is your real wine-prefix. It's children or 'wine-nodes' are essentially minimal copies of the master-node, the rest is symlinked. This allows you to have muliplte 'throw away' prefixes; where you don't need to re-install ms runtimes and your apps, as they use that data from the master-node, while copying only needed files in order to keep them unique/separate/sandboxed. It can be thought of as a psuedo/multi-user environment or wine-prefix templating/sharing... Some advanges are; 
 
 * multiple prefixes that share some core data (reducing prefix sizes, significantly).
-* helpful for when you have massive sound libraries, app data or preset databases. (no need to copy to a new prefix).
-* you can run multiple 'singleton apps'. ie: apps that try and hold a mutex or disallow running multiple instances
+* helpful for when you have massive sound libraries, app data or preset databases. (no need to copy/install to a new prefix).
+* you can run multiple 'singleton apps'. ie: apps that try and hold a mutex/lock or disallow running multiple instances
 * you can manage installations from a single prefix
-* the wine-nodes can be 'throw away' or a testing ground, in some cases. 
+* the wine-nodes can be 'throw away', templates or a testing ground, in some cases. 
 * you can tie different nodes to different wine-builds (like a build using different patchsets), winelib dlls and/or loader.
 
 these scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes). So some folders that it creates or symlinks wouldn't exist in a typical wine-prefix. However, it does show how it is done; the script is commented and is easy to edit. These scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
