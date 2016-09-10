@@ -69,11 +69,8 @@
 # script psuedo-Functions
 
 function func_freshHeadr(){
-
 clear
-
 sleep 0.2
-
 tput setab 0
 }
 
@@ -81,9 +78,7 @@ function func_pause(){
    read -p "$*"
 }
 
-
 tput setab 0 && func_freshHeadr
-
 
 CONTAINER="/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
 MASTER_NODE="master-node"                 # master node / wine-prefix we plan to symlink or copy data from, for node
@@ -99,10 +94,8 @@ X86="drive_c/Program Files (x86)"
 echo -e "\e[1;34m     ------------------------------------"
 echo -e "\e[1;34m     ---\e[1;37mWine Node Manager Script\e[1;34m---"
 echo -e "\e[1;34m     ------------------------------------\n"
-
 echo -e "  Please read the wine-node script for usage instructions." 
 echo -e "  This script requires modification!\n\n"
-
 sleep 1
 
 ###################################
@@ -111,7 +104,6 @@ sleep 1
 #
 
 cd "$CONTAINER"
-
 mkdir "$WINE_NODE"
 
 echo -e "  \e[1;91mPhase I: \e[1;34mCreating wine-node named: \e[1;96m"$WINE_NODE"\n"
@@ -129,10 +121,8 @@ echo -e "\n"
 echo -e "  \e[1;91mPhase II: \e[1;34mCopying data/files from master-node; \e[1;96m"$MASTER_NODE" \e[1;34minto \e[1;96m"$WINE_NODE"\n" 
 
 cp -r "$CONTAINER"/"$MASTER_NODE"/dosdevices /"$CONTAINER"/"$WINE_NODE"
-
 mkdir "$CONTAINER"/"$WINE_NODE"/drive_c
 mkdir "$CONTAINER"/"$WINE_NODE"/drive_c/windows
-
 cp -r "$CONTAINER"/"$MASTER_NODE"/drive_c/windows /"$CONTAINER"/"$WINE_NODE"/drive_c
 
 ###################################
@@ -143,7 +133,6 @@ cp -r "$CONTAINER"/"$MASTER_NODE"/drive_c/windows /"$CONTAINER"/"$WINE_NODE"/dri
 cd "$CONTAINER"/"$WINE_NODE"/drive_c/windows
 
 echo -e "\n"
-
 echo -e "  \e[1;91mPHASE III: \e[1;34mRemoving unwanted duplicate files from wine-node: \e[1;96m"$WINE_NODE"\n"
 
 rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/Installer
@@ -185,9 +174,7 @@ cp "$CONTAINER"/"$MASTER_NODE"/userdef.reg "$CONTAINER"/"$WINE_NODE"/userdef.reg
 USER="ninez"
 
 mkdir "$CONTAINER"/"$WINE_NODE"/drive_c/users
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/users/Public /"$CONTAINER"/"$WINE_NODE"/drive_c/users/Public
-
 cp -R "$CONTAINER"/"$MASTER_NODE"/drive_c/users/"$USER" /"$CONTAINER"/"$WINE_NODE"/drive_c/users
 
 ####################################
@@ -195,9 +182,7 @@ cp -R "$CONTAINER"/"$MASTER_NODE"/drive_c/users/"$USER" /"$CONTAINER"/"$WINE_NOD
 # Remove [copied] /Temp, then symlink to master-node. this temp folder holds installers, etc.
 
 chmod 775 -R "$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
-
 rm -R "$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/users/"$USER"/Temp /"$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
 
 ####################################
@@ -309,9 +294,7 @@ CFILES6="Digidesign"                # x64 only
 
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
-
 cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
-
 
 ####################################
 #
@@ -327,9 +310,7 @@ cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES2"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES2"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES4"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES5"
 
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES6"
@@ -363,9 +344,7 @@ NIFILE15="Massive"            # x86 only
 
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"
-
 cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE1" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE1"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE2"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE3" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE3"
@@ -374,18 +353,13 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE4" /"$CONTAIN
 # NIFILE5 - aka: Guitar Rig 5 is handled as a [SPECIAL CASE], per-node data handling. 
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE6" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE6"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE7"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE7"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE8" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE8"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE10" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE10"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE10" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE10"
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE11" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE11"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE12" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE12"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13"
@@ -410,26 +384,18 @@ ln -s "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE" /"$CONTAINER"/"$WINE_NODE"/"$X64
 # Say bye, give info, yada yda. exit
 
 echo -e "  \e[1;91mPhase V: \e[1;34mFinished creating wine-node: \e[1;96m"$WINE_NODE"\n\n"
-
 echo -e "  \e[1;92mTo use any particular wine-node that you have created, you must make sure to specify" 
 echo -e "  the correct WINEPREFIX of a given node.\n" 
-
 echo -e "  For example: if i had a wine-node named 'node1', i would add to custom/startup script; \n"
-
 echo -e "  #!bin/bash\n"
 echo -e "  \e[1;96mexport WINEPREFIX=/winebox/node1"
 echo -e "  ...<scripting>...\n"
 echo -e "  $ wine foo\n"
-
 echo -e "  \e[1;92mor via commandline;\n"
-
 echo -e "  \e[1;96menv WINEPREFIX=/winebox/node1 foo\n"
-
 echo -e "  \e[1;92mNOTE: you also need to re-create your node's after updating Wine. First "
 echo -e "  destroy/delete your existing nodes, then re-run this script.\n"
-
 echo -e "  \e[1;34mdone. bye"
-
 echo -e "  \e[1;37m"
 tput setab 0
 exit 0
