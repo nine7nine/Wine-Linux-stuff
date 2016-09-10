@@ -79,12 +79,7 @@ function func_pause(){
 }
 tput setab 0 && func_freshHeadr
 
-<<<<<<< HEAD
-
 CONTAINER="/home/ninez/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
-=======
-CONTAINER="/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
->>>>>>> a646ec24bfd53cf4f14b388dbc24d775dba62bd5
 MASTER_NODE="master-node"                 # master node / wine-prefix we plan to symlink or copy data from, for node
 WINE_NODE="node"$NODE""                   # wine-node by name, specify at commandline - easier for multiple runs [use NODE=X wine-node-config]
 X64="drive_c/Program Files"
@@ -228,7 +223,6 @@ mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES2"
 
 # Internet explorer
-<<<<<<< HEAD
 
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES3"
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES3"
@@ -240,16 +234,6 @@ mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"
 # Reaper
 
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
-=======
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES3"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES3"
-
-# Native instruments
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES4"
-
-# Reaper
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
->>>>>>> a646ec24bfd53cf4f14b388dbc24d775dba62bd5
 
 # BZEdit 1.6.5
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES6" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES6"
@@ -278,19 +262,12 @@ cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES1"
 
 # Microsoft Shared
-<<<<<<< HEAD
 
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES2"
-#ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES2"
+ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES2"
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES4"
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES5"
-=======
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES2"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES2"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES4"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES5"
->>>>>>> a646ec24bfd53cf4f14b388dbc24d775dba62bd5
-# ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES6"
+#ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES6"
 
 ####################################
 # Special Case: Native Instruments DIR variables [in ../Common files/Native Instruemnts'
@@ -315,7 +292,6 @@ NIFILE15="Massive"            # x86 only
 ####################################
 # Create '../Common Files/Native Instruments' Directory
 
-<<<<<<< HEAD
 #mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"
 #mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"
 
@@ -341,31 +317,6 @@ NIFILE15="Massive"            # x86 only
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13"
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE14" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE14"
 #ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15"
-=======
-mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"
-mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"
-cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE1" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE1"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE2"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE3" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE3"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE4"
-
-# NIFILE5 - aka: Guitar Rig 5 is handled as a [SPECIAL CASE], per-node data handling. 
-
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE6" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE6"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE7"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE7"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE8" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE8"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE9"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE9"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE10" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE10"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE10" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE10"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE11" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE11"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE12" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE12"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE13"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE14" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE14"
-ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15"
->>>>>>> a646ec24bfd53cf4f14b388dbc24d775dba62bd5
 
 ####################################
 # Create Symlink to Guitar Rig 5 data node[s]
@@ -375,12 +326,8 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15" /"$CONTAI
 #GR5_SHARED="Guitar Rig 5"
 
 # link GR5node data folders to each node
-<<<<<<< HEAD
 
 #ln -s "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE5"
-=======
-ln -s "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE5"
->>>>>>> a646ec24bfd53cf4f14b388dbc24d775dba62bd5
 
 ####################################
 # Say bye, give info, yada yda. exit
