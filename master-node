@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Wine-loader Wrapper 
+#
+# The idea is to make things convenient; 
+#
+# - set any environment variables for wine: lpa, wine-rt, wine-staging + prefix and/or paths
+# - simply starting an app from a particular node  
+
+WINE="$1"  # Path to executable
+PTH="$2"   # normally isn't used, unless you are specifying the app + a path
+
+#export WINEPATH="/winebox/master-node/lib/wine"
+export WINEPREFIX="/home/ninez/winebox/master-node"
+
+# Master-node isn't actually used to run day to day apps, so you shouldn't need
+# any extra env variables, unless you have a particular use case (?)
+
+exec "$WINE" "$PTH"
+
+exit
