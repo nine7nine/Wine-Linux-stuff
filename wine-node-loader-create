@@ -29,20 +29,15 @@ MK="dlls/ntdll dlls/kernel32 dlls/ntoskrnl.exe"
 # cd into source directory in container
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
-
 make distclean
-
 mkdir lpaldr
-
 cp -r "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/server "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/lpaldr
 cp -r "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/loader "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/lpaldr
-
 rm -rf wine-tools64
 
 export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
 
 mkdir -p wine-tools64
-
 cd wine-tools64
 
 "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/configure --prefix="$CONTAINER"/"$WINE_NODE" --without-opencl --without-mpg123 --disable-tests --libdir="$CONTAINER"/"$WINE_NODE"/lib --enable-win64
@@ -54,11 +49,8 @@ sleep 2
 # x86
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
-
 rm -rf wine-tools32
-
 mkdir -p wine-tools32
-
 cd wine-tools32
 
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
