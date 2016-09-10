@@ -29,11 +29,14 @@ MK="dlls/ntdll dlls/kernel32 dlls/ntoskrnl.exe"
 # cd into source directory in container
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
+
+# cleanup
 make distclean
 rm -rf wine-tools64
 
 export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
 
+# make
 mkdir -p wine-tools64
 cd wine-tools64
 
@@ -46,7 +49,11 @@ sleep 2
 # x86
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
+
+# cleanup 
 rm -rf wine-tools32
+
+# make
 mkdir -p wine-tools32
 cd wine-tools32
 
