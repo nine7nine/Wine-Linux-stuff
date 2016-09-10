@@ -8,23 +8,17 @@
 # script psuedo-Functions
 
 function func_freshHeadr(){
-
 clear
-
 sleep 0.2
-
 tput setab 0
 }
 
 function func_pause(){
    read -p "$*"
 }
-
-
 tput setab 0 && func_freshHeadr
 
 ####################################
-#
 # GR5updb Env vars
 
 CONTAINER="/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
@@ -33,7 +27,6 @@ WINE_NODE="node"$NODE""                   # wine-node by name, specify at comman
 DOC="My Documents"
 NI="Native Instruments"
 USR="users/ninez"
-
 GR5_CONTAINER="gr5box"
 GR5_NODE="GR5node"$NODE""
 GR5_SHARED="Guitar Rig 5"
