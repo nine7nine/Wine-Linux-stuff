@@ -24,6 +24,8 @@ WT64="wine-tools64"
 WT32="wine-tools32"
 MK="dlls/ntdll dlls/kernel32 dlls/ntoskrnl.exe" 
 
+##############################
+#
 # x64
 
 # cd into source directory in container
@@ -34,18 +36,17 @@ cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
 make distclean
 rm -rf wine-tools64
 
-export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
-
 # make
 mkdir -p wine-tools64
 cd wine-tools64
-
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
 "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/configure --prefix="$CONTAINER"/"$WINE_NODE" --without-opencl --without-mpg123 --disable-tests --libdir="$CONTAINER"/"$WINE_NODE"/lib --enable-win64
-
 make "$MK" CFLAGS+="-m64 -O2 -march=native -mtune=native" CXXFLAGS+="-m64 -O2 -march=native -mtune=native" install
 
 sleep 2
 
+##############################
+#
 # x86
 
 cd "$CONTAINER"/"$FILEDIR"/"$WINEDIR"
@@ -56,11 +57,8 @@ rm -rf wine-tools32
 # make
 mkdir -p wine-tools32
 cd wine-tools32
-
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
 "$CONTAINER"/"$FILEDIR"/"$WINEDIR"/configure --prefix="$CONTAINER"/"$WINE_NODE" --without-opencl --without-mpg123 --disable-tests --libdir="$CONTAINER"/"$WINE_NODE"/lib32 --with-wine64="$CONTAINER"/"$FILEDIR"/"$WINEDIR"/"$WT64"
-
 make "$MK" CFLAGS+="-m32 -O2 -march=native -mtune=native" CXXFLAGS+="-m32 -O2 -march=native -mtune=native" install
 
 exit
