@@ -77,7 +77,6 @@ tput setab 0
 function func_pause(){
    read -p "$*"
 }
-
 tput setab 0 && func_freshHeadr
 
 CONTAINER="/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
@@ -87,10 +86,7 @@ X64="drive_c/Program Files"
 X86="drive_c/Program Files (x86)"
 
 ################################################################################
-#
 # Start up, grief description and hello.
-#
-
 echo -e "\e[1;34m     ------------------------------------"
 echo -e "\e[1;34m     ---\e[1;37mWine Node Manager Script\e[1;34m---"
 echo -e "\e[1;34m     ------------------------------------\n"
@@ -99,9 +95,7 @@ echo -e "  This script requires modification!\n\n"
 sleep 1
 
 ###################################
-#
 # cd into container, prepare directory for a wine-node
-#
 
 cd "$CONTAINER"
 mkdir "$WINE_NODE"
@@ -112,11 +106,8 @@ cd "$WINE_NODE"
 mkdir bin
 
 echo -e "\n"
-
 ###################################
-#
 # copy wine-prefix [master node] into wine-node + make needed folders
-#
 
 echo -e "  \e[1;91mPhase II: \e[1;34mCopying data/files from master-node; \e[1;96m"$MASTER_NODE" \e[1;34minto \e[1;96m"$WINE_NODE"\n" 
 
@@ -126,9 +117,7 @@ mkdir "$CONTAINER"/"$WINE_NODE"/drive_c/windows
 cp -r "$CONTAINER"/"$MASTER_NODE"/drive_c/windows /"$CONTAINER"/"$WINE_NODE"/drive_c
 
 ###################################
-#
 # remove folders that we plan to symlink to
-#
 
 cd "$CONTAINER"/"$WINE_NODE"/drive_c/windows
 
@@ -141,25 +130,16 @@ rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/temp
 rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/winsxs
 
 echo -e "\n"
-
 ###################################
-#
 # Depending what you have installed in your wine-prefix, you may want to rm + symlink other folders;
-#
 # On x86_64 + wine32/64 mixed prefix + both x86/x64 runtimes, etc -> 92mb per node.
 
 rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/Microsoft.NET
 rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/system32/gecko
 rm -r "$CONTAINER"/"$WINE_NODE"/drive_c/windows/syswow64/gecko
 
-#
-#  SymLink wine-node reg files to master-node? [WARNING: it's possible to blow/screw up up master using a node!]
-#
-
 echo -e "  \e[1;91mPhase IV: \e[1;34mMigrating data and symlinks from master-node to wine-node: "$MASTER_NODE" to \e[1;96m"$WINE_NODE"\n"
-
 ###################################
-#
 # Copy Registries, so that no node can alter the master-node's reg files.
 
 cp "$CONTAINER"/"$MASTER_NODE"/user.reg "$CONTAINER"/"$WINE_NODE"/user.reg
@@ -167,7 +147,6 @@ cp "$CONTAINER"/"$MASTER_NODE"/system.reg "$CONTAINER"/"$WINE_NODE"/system.reg
 cp "$CONTAINER"/"$MASTER_NODE"/userdef.reg "$CONTAINER"/"$WINE_NODE"/userdef.reg
 
 ###################################
-#
 # don't symlink ../drive_c/users - we can symlink ../public [user dir], but for our user;
 # Instead, create directories, populate symlink and copy the data per-node.
 
@@ -178,7 +157,6 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/users/Public /"$CONTAINER"/"$WINE_NODE
 cp -R "$CONTAINER"/"$MASTER_NODE"/drive_c/users/"$USER" /"$CONTAINER"/"$WINE_NODE"/drive_c/users
 
 ####################################
-#
 # Remove [copied] /Temp, then symlink to master-node. this temp folder holds installers, etc.
 
 chmod 775 -R "$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
@@ -186,7 +164,6 @@ rm -R "$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/users/"$USER"/Temp /"$CONTAINER"/"$WINE_NODE"/drive_c/users/"$USER"/Temp
 
 ####################################
-#
 # populate ../windows with symlinks
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/windows/temp "$CONTAINER"/"$WINE_NODE"/drive_c/windows/temp 
@@ -195,9 +172,7 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/windows/Installer "$CONTAINER"/"$WINE_
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/windows/winsxs "$CONTAINER"/"$WINE_NODE"/drive_c/windows/winsxs 
 
 ####################################
-#
 # Depending what you have installed in your wine-prefix, you may want to rm + symlink other folders;
-#
 # On x86_64 + wine32/64 mixed prefix + both x86/x64 runtimes, etc -> 92mb per node. [without adding the below wine/dll stuff].
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/windows/winsxs /"$CONTAINER"/"$WINE_NODE"/drive_c/windows/Microsoft.NET
@@ -209,19 +184,15 @@ echo -e "\n"
 cd ..
 
 ################################################################################
-#
 # *** [SPECIAL CASE] Section ***
-#
 # 1. Create folder/directory structures
 # 2. populate with Symlinks to master-node for folders that can be shared from master-node
 # 3. copy/duplicate data that cannot be shared between running instances on separate nodes 
 #   * One such example here; Guitar Rig takes a lock, but I wanted more than one instance without
 #     having multiple installations!
-#
 # NOTE: x86 and x64 directories may differ - you need to account for this, in this script.
 
 ####################################
-#
 # Special Case DIR variables
 
 PFILES1="AAS"
@@ -235,52 +206,39 @@ PFILES8=
 PFILES9=
 
 ####################################
-#
 # Create ../Program Files directories
-# 
 
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"
 
 ####################################
-#
 # Populate ../Program Files with Symlinks to master-node's ../Program Files
-#
 
 # AAS
-
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES1"
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES1"
 
 # Applied Acoustic systems
-
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES2"
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES2"
 
 # Internet explorer
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES3"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES3" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES3"
 
 # Native instruments
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES4"
 
 # Reaper
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
 
 # BZEdit 1.6.5
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$PFILES6" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$PFILES6"
 
-
 ####################################
-#
 # Common Files stuff
 
 CMNFILES="Common Files"
-
 CFILES1="Avid"
 CFILES2="Microsoft Shared"
 CFILES3="Native Instruments"
@@ -288,40 +246,29 @@ CFILES4="Propellerhead Software"    # x64 only
 CFILES5="System"                    # x64 only
 CFILES6="Digidesign"                # x64 only
 
-#
 # Create '../Common Files' Directory.
-#
-
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
 cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
 
 ####################################
-#
 # Populate '../Common Files' with Symlinks to master-node's '../Common Files'
-#
 
 # Avid
-
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES1"
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES1"
 
 # Microsoft Shared
-
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES2"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES2" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES2"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES4" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES4"
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$CMNFILES"/"$CFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$CFILES5"
-
 # ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$CFILES1" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$CFILES6"
 
 ####################################
-#
 # Special Case: Native Instruments DIR variables [in ../Common files/Native Instruemnts'
-#
 
 NI="Native Instruments"
-
 NIFILE1="Absynth 5"           # x64 only
 NIFILE2="Battery 4"           # x64 only
 NIFILE3="Hardware"            # x64 only
@@ -339,7 +286,6 @@ NIFILE14="FM8"                # x86 only
 NIFILE15="Massive"            # x86 only
 
 ####################################
-#
 # Create '../Common Files/Native Instruments' Directory
 
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"
@@ -367,20 +313,16 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE14" /"$CONTAI
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15" /"$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"/"$NI"/"$NIFILE15"
 
 ####################################
-#
 # Create Symlink to Guitar Rig 5 data node[s]
-#
 
 GR5_CONTAINER="gr5box"
 GR5_NODE="GR5node"$NODE""
 GR5_SHARED="Guitar Rig 5"
 
 # link GR5node data folders to each node
-
 ln -s "$CONTAINER"/"$GR5_CONTAINER"/"$GR5_NODE" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"/"$NI"/"$NIFILE5"
 
 ####################################
-#
 # Say bye, give info, yada yda. exit
 
 echo -e "  \e[1;91mPhase V: \e[1;34mFinished creating wine-node: \e[1;96m"$WINE_NODE"\n\n"
