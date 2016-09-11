@@ -252,7 +252,6 @@ CFILES6="Digidesign"                # x64 only
 # Create '../Common Files' Directory.
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X64"/"$CMNFILES"
 mkdir "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
-cd "$CONTAINER"/"$WINE_NODE"/"$X86"/"$CMNFILES"
 
 ####################################
 # Populate '../Common Files' with Symlinks to master-node's '../Common Files'
