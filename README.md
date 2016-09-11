@@ -50,8 +50,11 @@ ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"
 ie: /home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64) symlinked to 
 
 /home/ninez/winebox/node1/drive_c/Program Files/REAPER (x64)
+
 /home/ninez/winebox/node2/drive_c/Program Files/REAPER (x64)
+
 /home/ninez/winebox/node3/drive_c/Program Files/REAPER (x64)
+
 /home/ninez/winebox/node4/drive_c/Program Files/REAPER (x64)
 
 The environment naming scheme may make you wonder; "why not just put the full paths?". Well, it is possible to have more
