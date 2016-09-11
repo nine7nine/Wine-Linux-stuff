@@ -22,13 +22,11 @@ That being said, for minimal setup and to get an idea of how it works;
 1. create a directory in your home directory called 'winebox'; /home/username/winebox
 2. create /home/username/winebox/bin and fill it with the scripts from this repo.
 3. add /home/username/winebox/bin to your PATH in .bashrc (ie: export PATH=/home/username/winebox/bin:$PATH)
-4. change some of the environment variable PATHs in the scripts:
+4. change some of the environment variable PATHs in wine-node-config/create scripts:
 
 CONTAINER="/home/username/winebox"
 
 USER="username"
-
-WINEPREFIX="/home/username/winebox/node*" (these are just in the wineloader templates)
 
 5. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
 6. Execute /home/ninez/winebox/bin/mastertricks (installing runtimes/dlls)
