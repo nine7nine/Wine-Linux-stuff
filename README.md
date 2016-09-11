@@ -25,7 +25,9 @@ That being said, for minimal setup and to get an idea of how it works;
 4. change some of the environment variable PATHs in the scripts:
 
 CONTAINER="/home/username/winebox"
+
 USER="username"
+
 WINEPREFIX="/home/username/winebox/node*" (these are just in the wineloader templates)
 
 5. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
