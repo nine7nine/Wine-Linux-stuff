@@ -11,9 +11,36 @@ This tool is for creating psuedo-prefixes in Wine. The idea is to have a single 
 * you can run multiple 'singleton apps'. ie: apps that try and hold a mutex/lock or disallow running multiple instances
 * you can manage installations from a single prefix
 * the wine-nodes can be 'throw away', templates or a testing ground, in some cases. 
-* you can tie different nodes to different wine-builds (like a build using different patchsets), winelib dlls and/or loader.
+* you can tie different nodes to different wine-builds (like a build using different patchset/features) and/or loader.
+* you can (and even should!) avoid using master-node/main wine-prefix, except for software installations and/or making 
+  global changes && app changes that you want each node to be affected by. (which will require deleting the nodes and re-running the 'wine-nodes-create' script).  
 
-these scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes). So some folders that it creates or symlinks wouldn't exist in a typical wine-prefix. However, it does show how it is done; the script is commented and is easy to edit. These scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
+IMPORTANT NOTE: These scripts will not work out-of-the-box, as they are setup for my own wine-container (a folder that contains the master-node and it's wine-nodes).  Some of the folders that it creates or symlinks wouldn't exist in a typical wine-prefix, or your system. However, it does show how it is done; the script is commented and is easy to edit. These scripts are setup for managing my Native Instruments installations and other proaudio apps, across wine-nodes...
+
+That being said, for minimal setup and to get an idea of how it works;
+
+1. create a directory in your home directory called 'winebox'; /home/username/winebox
+2. create /home/username/winebox/bin and fill it with the scripts from this repo.
+3. add /home/username/winebox/bin to your PATH in .bashrc (ie: export PATH=/home/username/winebox/bin:$PATH)
+4. change some of the environment variable PATHs in the scripts:
+
+CONTAINER="/home/username/winebox"
+USER="username"
+WINEPREFIX="/home/username/winebox/node*" (these are just in the wineloader templates)
+
+5. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
+6. Execute /home/ninez/winebox/bin/mastertricks (installing runtimes/dlls)
+7. After double-checking the scripts to make sure that you have all env/PATHs correct,
+   execute; wine-node-config
+
+You shoud now have a master-node and 4 nodes. Each node will not share registry files, nor will they share apps from the master-node by default. To share, you must go into the wine-node-create script and look under the [SPECIAL CASE] section. 
+It's really just a matter of adding a varoable with the relevant folder name. An example from my system;
+
+PFILES5="REAPER (x64)"
+
+ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
+
+# Wine-Node Scripts
 
 * wine-node-create - configures a single wine-node in a given wine-container, using the master-node. The script MUST be read
   and modified to your own needs before using. It accounts for both x86 and x64 paths and typically reproduces only the
