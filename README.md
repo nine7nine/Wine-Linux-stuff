@@ -53,7 +53,9 @@ PFILES5="REAPER (x64)"
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
 
-ie: /home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64) symlinked to 
+translates to: '/home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64)' 
+
+creating symlinks in the nodes folders(below), linking back to the master-node application folder.
 
 /home/ninez/winebox/node1/drive_c/Program Files/REAPER (x64)
 
