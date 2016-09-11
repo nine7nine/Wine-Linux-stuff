@@ -22,15 +22,18 @@ That being said, for minimal setup and to get an idea of how it works;
 1. create a directory in your home directory called 'winebox'; /home/username/winebox
 2. create /home/username/winebox/bin and fill it with the scripts from this repo.
 3. add /home/username/winebox/bin to your PATH in .bashrc (ie: export PATH=/home/username/winebox/bin:$PATH)
-4. change some of the environment variable PATHs in wine-node-config/create scripts:
+4. from a terminal, execute: $ source ~/.bashrc
+5. change some of the environment variable PATHs in mastertricks && wine-node-config/create shell scripts:
 
 CONTAINER="/home/username/winebox"
 
 USER="username"
 
-5. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
-6. Execute /home/ninez/winebox/bin/mastertricks (installing runtimes/dlls)
-7. After double-checking the scripts to make sure that you have all env/PATHs correct,
+Next,
+
+1. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
+2. from a terminal, execute: $ mastertricks (installs runtimes/dlls in your master-node)
+3. After double-checking the scripts to make sure that you have all env/PATHs correct,
    execute; wine-node-config... You shoud now have a master-node and 4 nodes;
 
 /home/username/winebox/bin
@@ -41,7 +44,7 @@ USER="username"
 /home/username/winebox/node4
 
 Each node will not share registry files, nor will they share apps from the master-node by default. To share, you 
-must edit  the wine-node-create script, under the [SPECIAL CASE] section. It's really just a matter of adding a variable with the relevant folder name. An example from my system;
+must edit the wine-node-create script, under the [SPECIAL CASE] section. It's really just a matter of adding a variable with the relevant folder name. An example from my system;
 
 PFILES5="REAPER (x64)"
 
