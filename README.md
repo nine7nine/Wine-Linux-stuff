@@ -31,14 +31,31 @@ WINEPREFIX="/home/username/winebox/node*" (these are just in the wineloader temp
 5. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
 6. Execute /home/ninez/winebox/bin/mastertricks (installing runtimes/dlls)
 7. After double-checking the scripts to make sure that you have all env/PATHs correct,
-   execute; wine-node-config
+   execute; wine-node-config... You shoud now have a master-node and 4 nodes;
 
-You shoud now have a master-node and 4 nodes. Each node will not share registry files, nor will they share apps from the master-node by default. To share, you must go into the wine-node-create script and look under the [SPECIAL CASE] section. 
-It's really just a matter of adding a varoable with the relevant folder name. An example from my system;
+/home/username/winebox/bin
+/home/username/winebox/master-node
+/home/username/winebox/node1
+/home/username/winebox/node2
+/home/username/winebox/node3
+/home/username/winebox/node4
+
+Each node will not share registry files, nor will they share apps from the master-node by default. To share, you 
+must edit  the wine-node-create script, under the [SPECIAL CASE] section. It's really just a matter of adding a variable with the relevant folder name. An example from my system;
 
 PFILES5="REAPER (x64)"
 
 ln -s "$CONTAINER"/"$MASTER_NODE"/"$X64"/"$PFILES5" /"$CONTAINER"/"$WINE_NODE"/"$X64"/"$PFILES5"
+
+ie: /home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64) symlinked to 
+
+/home/ninez/winebox/node1/drive_c/Program Files/REAPER (x64)
+/home/ninez/winebox/node2/drive_c/Program Files/REAPER (x64)
+/home/ninez/winebox/node3/drive_c/Program Files/REAPER (x64)
+/home/ninez/winebox/node4/drive_c/Program Files/REAPER (x64)
+
+The environment naming scheme may make you wonder; "why not just put the full paths?". Well, it is possible to have more
+than one container, to rename the nodes/master-node, etc. Additionally, I found this to be more flexible and easier to read; Especially, in text editors that display shell scripts in color!
 
 # Wine-Node Scripts
 
