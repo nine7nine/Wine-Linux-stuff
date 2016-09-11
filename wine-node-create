@@ -79,6 +79,7 @@ function func_pause(){
 }
 tput setab 0 && func_freshHeadr
 
+USER="ninez"
 CONTAINER="/home/ninez/winebox"                      # path to the container/folder for your wine-prefix[es] + wine-node(s)
 MASTER_NODE="master-node"                 # master node / wine-prefix we plan to symlink or copy data from, for node
 WINE_NODE="node"$NODE""                   # wine-node by name, specify at commandline - easier for multiple runs [use NODE=X wine-node-config]
@@ -149,8 +150,6 @@ cp "$CONTAINER"/"$MASTER_NODE"/userdef.reg "$CONTAINER"/"$WINE_NODE"/userdef.reg
 ###################################
 # don't symlink ../drive_c/users - we can symlink ../public [user dir], but for our user;
 # Instead, create directories, populate symlink and copy the data per-node.
-
-USER="ninez"
 
 mkdir "$CONTAINER"/"$WINE_NODE"/drive_c/users
 ln -s "$CONTAINER"/"$MASTER_NODE"/drive_c/users/Public /"$CONTAINER"/"$WINE_NODE"/drive_c/users/Public
