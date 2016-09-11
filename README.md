@@ -36,11 +36,14 @@ Next,
 3. After double-checking the scripts to make sure that you have all env/PATHs correct,
    execute; wine-node-config... You shoud now have a master-node and 4 nodes;
 
-/home/username/winebox/bin
 /home/username/winebox/master-node
+
 /home/username/winebox/node1
+
 /home/username/winebox/node2
+
 /home/username/winebox/node3
+
 /home/username/winebox/node4
 
 Each node will not share registry files, nor will they share apps from the master-node by default. To share, you 
