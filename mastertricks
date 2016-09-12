@@ -8,11 +8,46 @@
 #
 # NOTE: if anything fails, you can always re-run the script; it should skip installed dlls.
 
-CONTAINER="/winebox"
+CONTAINER="/home/ninez/winebox"
 MASTER_NODE="master-node"
 
-export WINEPREFIX="$CONTAINER"/"$MASTER_NODE"
+export WINEARCH=win64 WINEPREFIX="$CONTAINER"/"$MASTER_NODE"
 
-winetricks ie8 mfc42 msasn1 msls31 msvcirt msxml3 secur32 vb6run vcrun2003 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 vcrun6 vcrun6sp6
+rm -rf mkdir "$CONTAINER"/"$MASTER_NODE"
+mkdir "$CONTAINER"/"$MASTER_NODE"
+
+exec wine winecfg &
+
+winetricks mfc42 msasn1 msls31 msvcirt msxml3 secur32 vb6run vcrun2003 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 vcrun6 vcrun6sp6 mf
+
+# msRuntime for (missing) x64 folders
+
+rm -rf "$CONTAINER"/msRuntime-x64
+mkdir "$CONTAINER"/msRuntime-x64
+
+mkdir "$CONTAINER"/msRuntime-x64/msvc2005 
+cd "$CONTAINER"/msRuntime-x64/msvc2005
+wget https://download.microsoft.com/download/9/1/4/914851c6-9141-443b-bdb4-8bad3a57bea9/vcredist_x64.exe
+
+mkdir "$CONTAINER"/msRuntime-x64/msvc2008
+cd "$CONTAINER"/msRuntime-x64/msvc2008
+wget https://download.microsoft.com/download/d/2/4/d242c3fb-da5a-4542-ad66-f9661d0a8d19/vcredist_x64.exe
+
+
+mkdir "$CONTAINER"/msRuntime-x64/msvc2010
+cd "$CONTAINER"/msRuntime-x64/msvc2010
+wget https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe
+
+
+mkdir "$CONTAINER"/msRuntime-x64/msvc2012
+cd "$CONTAINER"/msRuntime-x64/msvc2012
+wget https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
+
+# install
+
+wine "$CONTAINER"/msRuntime-x64/msvc2005/vcredist_x64.exe 
+wine "$CONTAINER"/msRuntime-x64/msvc2008/vcredist_x64.exe 
+wine "$CONTAINER"/msRuntime-x64/msvc2010/vcredist_x64.exe 
+wine "$CONTAINER"/msRuntime-x64/msvc2012/vcredist_x64.exe
 
 exit
