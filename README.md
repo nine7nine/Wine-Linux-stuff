@@ -31,8 +31,7 @@ USER="username"
 
 Next,
 
-1. Create a wine-prefix in your wine-container, name it master-node; /home/username/winebox/master-node
-2. from a terminal, execute: $ mastertricks (installs runtimes/dlls in your master-node)
+1. from a terminal run /home/username/winebox/bin/mastertricks (it'll create the master-node!)
 3. After double-checking the scripts to make sure that you have all env/PATHs correct,
    execute; wine-node-config... You shoud now have a master-node and 4 nodes;
 
@@ -45,6 +44,8 @@ Next,
 /home/username/winebox/node3
 
 /home/username/winebox/node4
+
+(Alternatively, wine-node-create could be used create a single nodes individually from the master-node)
 
 (to make easy use of the nodes, I've included example wineloader wrappers; node*/master-node scripts. The PATHs will
 also need to be adjusted, but you would use these instead of executing 'wine foo'. NOTE: My examples, have the wine-rt/staging variables enabled... you can just comment them out, if they aren't desired).
