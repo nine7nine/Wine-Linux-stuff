@@ -7,8 +7,8 @@
 # - set any environment variables for wine: lpa, wine-rt, wine-staging + prefix and/or paths
 # - simply starting an app from a particular node  
 
-WINE="$1"  # Path to executable
-PTH="$2"   # normally isn't used, unless you are specifying the app + a path
+WINE="$1"  # Path to executable (wine, winecfg, etc)
+PTH="$2"   # app name
 
 #export WINEPATH="/winebox/master-node/lib/wine"
 export WINEPREFIX="/home/ninez/winebox/master-node"
