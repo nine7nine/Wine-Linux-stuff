@@ -10,7 +10,6 @@
 WINE="$1"  # Path to executable
 PTH="$2"   # normally isn't used, unless you are specifying the app + a path
 
-#export WINEPATH="/winebox/node1/lib/wine"
 export WINEPREFIX="/home/ninez/winebox/node1"
 
 export WINE_SRV_RT=${WINE_SRV_RT:-15}
