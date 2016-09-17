@@ -83,6 +83,14 @@ This would create 4 wine-nodes, which would use about 100mb per node [on average
 A winetricks wrapper for Wine-Node's master-node, automating the installation of commonly needed dlls and runtimes 
 for proaudio apps and other programs. 
 
+# Node1 (node example srcipt
+
+this script just shows how to setup a script to launch from a particular node + setting up your environment (variables)
+
+# wkill
+
+Simple but useful script for killing wineserver and friends, useful if they don't shutdown properly.
+
 # gr5updb 
 
 A migration tool that I use to manage GuitarRig5 Presets. When wine isn't running, I can use this script to push
