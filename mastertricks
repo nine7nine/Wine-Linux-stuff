@@ -2,8 +2,9 @@
 
 # Winetricks wrapper for Wine-Node's 'master-node'
 #
-# You specify the container and master-node and container path, it will grab the most commonly needed dlls for running
-# common apps, including x64 runtimes. this avoids having to get them manually, since winetricks doesn't grab them all.
+# You specify the container and master-node, it will grab the most commonly needed dlls for running
+# proaudio apps. * note: winetricks doesn't always grab the x64 stuff, so you may need to manually download them from 
+# microsft, if needed.
 #
 # NOTE: if anything fails, you can always re-run the script; it should skip installed dlls.
 
@@ -17,7 +18,7 @@ mkdir "$CONTAINER"/"$MASTER_NODE"
 
 exec wine winecfg &
 
-winetricks mfc42 msasn1 msls31 msvcirt msxml3 secur32 vb6run vcrun2003 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 vcrun6 vcrun6sp6 mf
+winetricks mfc42 msasn1 msls31 msvcirt msxml3 secur32 vb6run vcrun2003 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2015 vcrun6 vcrun6sp6 mf corefonts
 
 # msRuntime for (missing) x64 folders
 
@@ -32,9 +33,11 @@ mkdir "$CONTAINER"/msRuntime-x64/msvc2008
 cd "$CONTAINER"/msRuntime-x64/msvc2008
 wget https://download.microsoft.com/download/d/2/4/d242c3fb-da5a-4542-ad66-f9661d0a8d19/vcredist_x64.exe
 
+
 mkdir "$CONTAINER"/msRuntime-x64/msvc2010
 cd "$CONTAINER"/msRuntime-x64/msvc2010
 wget https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe
+
 
 mkdir "$CONTAINER"/msRuntime-x64/msvc2012
 cd "$CONTAINER"/msRuntime-x64/msvc2012
