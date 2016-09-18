@@ -100,7 +100,7 @@ changes and migrate them to each node.
 
 # Reaper
 
-An example (app) script. This is the script that I use to start Reaper, making use of all of the features from wine, wine-staging and wine-lpa via environment variables.
+An example startup script for starting a wine application.. In this case, it us the script that I use for Reaper; making use of all of the features from wine, wine-staging and wine-lpa via environment variables.
 
 # Mutex Tests
 
