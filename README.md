@@ -83,7 +83,7 @@ This would create 4 wine-nodes, which would use about 100mb per node [on average
 A winetricks wrapper for Wine-Node's master-node, automating the installation of commonly needed dlls and runtimes 
 for proaudio apps and other programs. 
 
-# Node1 (node example srcipt
+# Node1 (node example srcipt)
 
 this script just shows how to setup a script to launch from a particular node + setting up your environment (variables)
 
