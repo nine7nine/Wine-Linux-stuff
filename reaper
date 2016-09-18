@@ -20,8 +20,9 @@ export L_RT_PRIO=79
 # Enable pipe synchronization optimization for Reaper
 export L_ENABLE_PIPE_SYNC_FOR_APP="reaper.exe"
 exec wine "/home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64)/reaper.exe" & 
-
 # Enable pipe synchronization for Reaper's 'separate process' VST host
+# NOTE: Reaper actually starts the vst host, but It won't set the pipe sync env variable.
+# therefore, I start it manually, then it gets set properly.
 export L_ENABLE_PIPE_SYNC_FOR_APP="reaper_host64.exe"
 exec wine "/home/ninez/winebox/master-node/drive_c/Program Files/REAPER (x64)/Plugins/reaper_host64.exe"
 
