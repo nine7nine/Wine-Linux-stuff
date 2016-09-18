@@ -98,6 +98,10 @@ all new gr5 presets from wine-nodes back to the master-node. Then, I run gr5 frm
 it's database. This way, when I update my master-node and re-run the 'wine-node-config' script, I can keep all of those
 changes and migrate them to each node.
 
+# Reaper
+
+An example (app) script. This is the script that I use to start Reaper, making use of all of the features from wine, wine-staging and wine-lpa via environment variables.
+
 # Mutex Tests
 
 2 windows executables for testing mutex performance and synchronisation in Windows/Wine.
