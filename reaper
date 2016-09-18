@@ -8,7 +8,7 @@ export WINEPREFIX="/home/ninez/winebox/master-node"
 export STAGING_SHARED_MEMORY=1
 export STAGING_WRITECOPY=1
 # Wine-Staging Wineserver RT priority
-export STAGING_RT_PRIORITY_SERVER=85
+export STAGING_RT_PRIORITY_SERVER=82
 # Wine-Staging base_rt_priority
 export STAGING_RT_PRIORITY_BASE=74
 # Wine-LPA rt- patches
